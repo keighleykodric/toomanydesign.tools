@@ -1,0 +1,24 @@
+<section>
+    <h1><a href="bootstrap.html">Bootstrap Prototyping</a></h1>    
+    <p>For creating prototypes using the bootstrap framework</p>    
+    <ul class="tools tool-type-bootstrap">        
+        {% assign bootstrap = site.toolbootstrap | sort: 'title' %}        
+        {% for bootstrap in bootstrap %}
+        <li class="tool {{ bootstrap.status }}">
+            <a href="{{ bootstrap.link }}" class="tool-url" target="_blank">
+            <h2 class="tool-title">{{ bootstrap.title }}</h2>
+                {% if page.type += "home" %}
+                    {% if bootstrap.image %}<img src="/images/screenshots/{{ bootstrap.image }}" alt="{{ bootstrap.image }}"/>{% endif %}
+                {% elsif bootstrap.status == "popular" %}
+                    {% if bootstrap.image %}<img src="/images/screenshots/{{ bootstrap.image }}" alt="{{ bootstrap.image }}"/>{% endif %}
+                {% endif %}
+                <span class="tool-description">                    
+                    {{ bootstrap.content }}
+                    {% if bootstrap.author %}<p class="tool-author">By <strong>{{ bootstrap.author }}</strong></p>{% endif %}
+                    {% if bootstrap.publisher %}<p class="tool-publisher">Published on <strong>{{ bootstrap.site }}</strong></p>{% endif %}
+                </span>
+            </a>
+        </li>
+        {% endfor %}                
+    </ul>
+</section>

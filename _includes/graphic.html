@@ -1,0 +1,31 @@
+<section>
+    <h1><a href="graphic.html">Graphic Editing</a></h1>    
+    <p>Software fro creating rater graphics, bitmaps, svg's, etc...</p>    
+    <ul class="tools tool-type-graphic">        
+        {% assign graphic = site.toolgraphic | sort: 'title' %}        
+        {% for graphic in graphic %}
+        <li class="tool {{ graphic.status }}">
+            <a href="{{ graphic.link }}" class="tool-url" target="_blank">
+            <h2 class="tool-title">{{ graphic.title }}</h2>
+                {% if page.type += "home" %}
+                    {% if graphic.image %}<img src="/images/screenshots/{{ graphic.image }}" alt="{{ graphic.image }}"/>{% endif %}
+                {% elsif graphic.status == "popular" %}
+                    {% if graphic.image %}<img src="/images/screenshots/{{ graphic.image }}" alt="{{ graphic.image }}"/>{% endif %}
+                {% endif %}
+                <span class="tool-description">                    
+                    {{ graphic.content }}
+                    {% if graphic.author %}<p class="tool-author">By <strong>{{ graphic.author }}</strong></p>{% endif %}
+                    {% if graphic.publisher %}<p class="tool-publisher">Published on <strong>{{ graphic.site }}</strong></p>{% endif %}
+                    {% if graphic.tags %}
+                            <ul class="tool-tags">
+                                {% for tags in graphic.tags %}
+                                    <li>{{ tags }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                </span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

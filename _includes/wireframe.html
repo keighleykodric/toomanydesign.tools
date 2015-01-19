@@ -1,0 +1,24 @@
+<section>
+    <h1><a href="wireframe.html">Wireframing</a></h1>    
+    <p>Wireframe Editing Software</p>    
+    <ul class="tools tool-type-wireframe">        
+        {% assign wireframe = site.toolwireframe | sort: 'title' %}        
+        {% for wireframe in wireframe %}
+        <li class="tool {{ wireframe.status }}">
+            <a href="{{ wireframe.link }}" class="tool-url" target="_blank">
+            <h2 class="tool-title">{{ wireframe.title }}</h2>
+                {% if page.type += "home" %}
+                    {% if wireframe.image %}<img src="/images/screenshots/{{ wireframe.image }}" alt="{{ wireframe.image }}"/>{% endif %}
+                {% elsif wireframe.status == "popular" %}
+                    {% if wireframe.image %}<img src="/images/screenshots/{{ wireframe.image }}" alt="{{ wireframe.image }}"/>{% endif %}
+                {% endif %}
+                <span class="tool-description">                    
+                    {{ wireframe.content }}
+                    {% if wireframe.author %}<p class="tool-author">By <strong>{{ wireframe.author }}</strong></p>{% endif %}
+                    {% if wireframe.publisher %}<p class="tool-publisher">Published on <strong>{{ wireframe.site }}</strong></p>{% endif %}
+                </span>
+            </a>
+        </li>
+        {% endfor %}                
+    </ul>
+</section>

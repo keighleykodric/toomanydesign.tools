@@ -1,0 +1,25 @@
+# Site settings
+title: Too Many Design Tools
+description: A collaborative collection of web design tools avaible for designers.
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+
+collections:
+    toolgraphic:
+        output: true    
+    toolcode:
+        output: true 
+    toolwireframe:
+        output: true 
+    toolinbrowser:
+        output: true
+    toolbootstrap:
+        output: true
+    toolinteractive:
+        output: true
+    toolmobile:
+        output: true
+    toolmockup:
+        output: true 

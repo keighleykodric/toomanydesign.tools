@@ -1,0 +1,24 @@
+<section>
+    <h1><a href="inbrowser.html">In Browser Prototyping</a></h1>    
+    <p>In-Browser Editing Software</p>    
+    <ul class="tools tool-type-inbrowser">        
+        {% assign inbrowser = site.toolinbrowser | sort: 'title' %}        
+        {% for inbrowser in inbrowser %}
+        <li class="tool {{ inbrowser.status }}">
+            <a href="{{ inbrowser.link }}" class="tool-url" target="_blank">
+            <h2 class="tool-title">{{ inbrowser.title }}</h2>
+                {% if page.type += "home" %}
+                    {% if inbrowser.image %}<img src="/images/screenshots/{{ inbrowser.image }}" alt="{{ inbrowser.image }}"/>{% endif %}
+                {% elsif inbrowser.status == "popular" %}
+                    {% if inbrowser.image %}<img src="/images/screenshots/{{ inbrowser.image }}" alt="{{ inbrowser.image }}"/>{% endif %}
+                {% endif %}
+                <span class="tool-description">                    
+                    {{ inbrowser.content }}
+                    {% if inbrowser.author %}<p class="tool-author">By <strong>{{ inbrowser.author }}</strong></p>{% endif %}
+                    {% if inbrowser.publisher %}<p class="tool-publisher">Published on <strong>{{ inbrowser.site }}</strong></p>{% endif %}
+                </span>
+            </a>
+        </li>
+        {% endfor %}        
+    </ul>
+</section>

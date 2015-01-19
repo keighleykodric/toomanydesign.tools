@@ -1,0 +1,24 @@
+<section>
+    <h1><a href="mockup.html">Mockup Prototyping</a></h1>    
+    <p>Takes your existing mockups and makes them interactive</p>    
+    <ul class="tools tool-type-mockup">        
+        {% assign mockup = site.toolmockup | sort: 'title' %}        
+        {% for mockup in mockup  %}
+        <li class="tool {{ mockup.status }}">
+            <a href="{{ mockup.link }}" class="tool-url" target="_blank">
+            <h2 class="tool-title">{{ mockup.title }}</h2>
+                {% if page.type += "home" %}
+                    {% if mockup.image %}<img src="/images/screenshots/{{ mockup.image }}" alt="{{ mockup.image }}"/>{% endif %}
+                {% elsif mockup.status == "popular" %}
+                    {% if mockup.image %}<img src="/images/screenshots/{{ mockup.image }}" alt="{{ mockup.image }}"/>{% endif %}
+                {% endif %}
+                <span class="tool-description">                    
+                    {{ mockup.content }}
+                    {% if mockup.author %}<p class="tool-author">By <strong>{{ mockup.author }}</strong></p>{% endif %}
+                    {% if mockup.publisher %}<p class="tool-publisher">Published on <strong>{{ mockup.site }}</strong></p>{% endif %}
+                </span>
+            </a>
+        </li>
+        {% endfor %}                
+    </ul>
+</section>

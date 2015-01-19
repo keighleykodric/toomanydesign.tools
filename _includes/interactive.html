@@ -1,0 +1,23 @@
+<section>
+    <h1><a href="interactive.html">Interactive Prototyping</a></h1>    
+    <p>For creating interactive prototypes</p>    
+    <ul class="tools tool-type-interactive">        
+        {% assign interactive = site.toolinteractive | sort: 'title' %}        
+        {% for interactive in interactive %}
+        <li class="tool {{ interactive.status }}">
+            <a href="{{ interactive.link }}" class="tool-url" target="_blank">
+            <h2 class="tool-title">{{ interactive.title }}</h2>
+                {% if page.type += "home" %}
+                    {% if interactive.image %}<img src="/images/screenshots/{{ interactive.image }}" alt="{{ interactive.image }}"/>{% endif %}
+                {% elsif interactive.status == "popular" %}
+                    {% if interactive.image %}<img src="/images/screenshots/{{ interactive.image }}" alt="{{ interactive.image }}"/>{% endif %}
+                {% endif %}
+                <span class="tool-description">
+                    {% if interactive.author %}<p class="tool-author">By <strong>{{ interactive.author }}</strong></p>{% endif %}
+                    {% if interactive.publisher %}<p class="tool-publisher">Published on <strong>{{ interactive.site }}</strong></p>{% endif %}
+                </span>
+            </a>
+        </li>
+        {% endfor %}                
+    </ul>
+</section>
